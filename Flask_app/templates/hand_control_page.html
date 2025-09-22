@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hand Control</title>
+  <!-- Styles for the HTML document. -->
+  <style>
+    body {
+      position: relative;
+    }
+
+    #video-feed {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 140px;
+    }
+
+    #presentation-iframe {
+      width: 100%;
+      height: 97vh;
+    }
+
+    #banner {
+      position: absolute;
+      top: 20vh;
+      width: 25%;
+    }
+
+    #pen_banner {
+      position: absolute;
+      top: 0vh;
+      width: 6%;
+    }
+  </style>
+  
+  <script>
+    // Script to handle changes in fullscreen mode and adjust presentation iframe height accordingly.
+    document.addEventListener("fullscreenchange", function () {
+      var presentationIframe = document.getElementById("presentation-iframe");
+      if (document.fullscreenElement) {
+        presentationIframe.style.height = "97%";
+      } else {
+        presentationIframe.style.height = "97vh";
+      }
+    });
+  </script>
+
+  <script>
+    // Script to detect the type of browser.
+    function getBrowserType() {
+      const test = regexp => {
+        return regexp.test(navigator.userAgent);
+      };
+
+      if (test(/opr\//i) || !!window.opr) {
+        return 'Opera';
+      } else if (test(/edg/i)) {
+        return 'Microsoft Edge';
+      } else if (test(/chrome|chromium|crios/i)) {
+        return 'Google Chrome';
+      } else if (test(/firefox|fxios/i)) {
+        return 'Mozilla Firefox';
+      } else if (test(/safari/i)) {
+        return 'Apple Safari';
+      } else if (test(/trident/i)) {
+        return 'Microsoft Internet Explorer';
+      } else if (test(/ucbrowser/i)) {
+        return 'UC Browser';
+      } else if (test(/samsungbrowser/i)) {
+        return 'Samsung Browser';
+      } else {
+        return 'Unknown browser';
+      }
+    }
+
+    const browserType = getBrowserType(); // Get the browser type and update the HTML element.
+    const browserTypeElement = document.getElementById('browser-type');
+    browserTypeElement.innerHTML = browserType;
+
+
+  </script>
+
+  <script>
+    // Script to periodically fetch and send the window size information to the server.
+    function get_size() {
+      let screenHeight = window.screen.height;
+      let screenWidth = window.screen.width;
+      let w = window.outerWidth;
+      let h = window.outerHeight;
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ w }),
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ h }),
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ height }),
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ width }),
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ screenHeight }),
+      });
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ screenWidth }),
+      });
+
+      return [screenHeight, screenWidth, h, w, height, width];
+    }
+
+    const interval = 5000; // Set interval to periodically update window size information.
+    setInterval(get_size, interval);
+  </script>
+</head>
+
+<body>
+  <!-- Script to periodically update the visibility status of tutorial banner. -->
+  <script>
+    function updateTutorialStatus() { // Function to update tutorial banner visibility.
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          var tutorialStatus = data.tutorial_activated;
+          var banner = document.getElementById('banner');
+
+          if (tutorialStatus) {
+            banner.style.display = 'none';
+          } else {
+            banner.style.display = 'block';
+          }
+        }
+      };
+      xhr.open('GET', '/get_tutorial_status', true);
+      xhr.send();
+    }
+
+    setInterval(updateTutorialStatus, 200); // Set interval to periodically update tutorial banner visibility.
+
+    function updatePenStatus() { // Function to periodically update the visibility status of the pen banner.
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          var penStatus = data.pen_activated;
+          var pen_banner = document.getElementById('pen_banner');
+
+          if (penStatus) {
+            pen_banner.style.display = 'none';
+          } else {
+            pen_banner.style.display = 'block';
+          }
+        }
+      };
+      xhr.open('GET', '/get_pen_status', true);
+      xhr.send();
+    }
+
+    setInterval(updatePenStatus, 200); // Set interval to periodically update pen banner visibility
+  </script>
+  <!-- Conditional rendering of pen banner based on the pen_activated variable -->
+  {% if pen_activated %}
+  <img id="pen_banner" src="{{url_for('static', filename='pen.png')}}" style="display: none;">
+  {% endif %}
+  <!-- Conditional rendering of tutorial banner based on the tutorial_activated variable -->
+  {% if tutorial_activated %}
+  <img id="banner" src="{{url_for('static', filename='tutorial_banner.png')}}" style="display: none;">
+  {% endif %}
+  <!-- Iframe for presentation and video feed -->
+  <iframe id="presentation-iframe" src="{{ presentation_url }}"></iframe>
+  <img id="video-feed" src="{{ url_for('hand_control_page', presentation_url=presentation_url) }}">
+
+  <!-- Script for handling visibility changes and window resize -->
+  <script>
+    var value_to_pass = "true";
+    var isFirstTime = true;
+    var isFirstResize = true;
+    var [screenHeight, screenWidth, h, w, height, width] = get_size();
+
+    // Function to navigate back to the home page on visibility change
+    function backToHomeVisibilityChange() {
+      var url = "{{ url_for('home') }}" + "?value_to_pass=" + encodeURIComponent(value_to_pass);
+      window.location.href = url;
+    }
+
+    // Function to navigate back to the home page
+    function backToHome() {
+      var url = "{{ url_for('home') }}";
+      window.location.href = url;
+    }
+
+    if (browserType === "Apple Safari" && (screenHeight !== h || screenWidth !== w)) {
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          if (!isFirstTime) {
+            backToHomeVisibilityChange();
+          } else {
+            isFirstTime = false;
+          }
+        }
+      }, false);
+    } else {
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          backToHomeVisibilityChange();
+        }
+      }, false);
+
+    }
+    
+    window.addEventListener('resize', function () {
+      var newWindowHeight = window.innerHeight;
+      if (newWindowHeight < height) {
+        backToHome();
+      }
+      height = newWindowHeight;
+    });
+
+  </script>
+</body>
+
+</html>
+

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandWave</title>
+    <!-- External stylesheet for Materialize CSS framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        /* General styling for the body */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1565c0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }       
+
+        /* Styling for the header section */
+        header {
+            background-color: #0d47a1;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Styling for the form section */
+        form {
+            text-align: center;
+        }       
+
+        /* Styling for images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Styling for generic sections */
+        section {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Styling for paragraphs inside sections */
+        section p {
+            font-family: 'Consolas', monospace;
+            font-size: 18px;
+        }
+
+        /* Styling for headers */
+        h4 {
+            font-family: 'Consolas', monospace;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Styling for iframes */
+        iframe {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Styling for the main container */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #b3ecff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } 
+
+        /* Styling for a container with buttons */
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        /* Styling for buttons */
+        button {
+            background-color: #0d47a1;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* Styling for button hover effect */
+        button:hover {
+            background-color: #1565c0;
+        }
+
+        /* Styling for specific elements with IDs */
+        #contentLeft{
+            display: none;
+        }
+
+        #contentLeft h4 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #contentLeft ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        #contentLeft ol li:before{
+            list-style-type: decimal;
+            display: none;
+        }
+
+        /* Styling for list items in the left content */
+        #contentLeft li {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            font-family: 'Consolas', monospace;
+        }
+
+        #contentLeft li:before {
+            content: '+';
+            color: #0d47a1;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            line-height: 10px;
+            background-color: #0d47a1;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #contentLeft img {
+            margin: 0;
+            width: 7%;
+            margin-right: 10px;
+        }
+
+        #contentLeft p {
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        #contenRight{
+            display: none;
+        }
+
+        #contentRight h4 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #contentRight ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        #contentRight ol li:before{
+            list-style-type: decimal;
+            display: none;
+        }
+
+        /* Styling for list items in the left content */
+        #contentRight li {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            font-family: 'Consolas', monospace;
+        }
+
+        #contentRight li:before {
+            content: '+';
+            color: #0d47a1;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            line-height: 10px;
+            background-color: #0d47a1;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #contentRight img {
+            margin: 0;
+            width: 7%;
+            margin-right: 10px;
+        }
+
+        #contentRight p {
+            font-family: 'Consolas', monospace;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        label {
+            color: #2e2e2e; 
+            font-size: 17px; 
+            margin-bottom: 10px; 
+        }
+
+        /* Styling for the input field for presentation URL */
+        #presentation-url-input {
+            width: 80%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            margin-bottom: 20px; 
+            border: 1px solid #0d47a1; 
+            border-radius: 5px;
+            color: #000000;
+        }
+        /* Styling for the placeholder text in the input field */
+        #presentation-url-input::placeholder {
+            color: #527a7a;
+        }
+        #browser-type {
+            display: none;
+        }
+        /* Styling for the presentation iframe */
+        #presentation-iframe {
+            width: 65%;
+            height: 65vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="container">
+        <!-- Header section with logo -->
+        <header>
+            <img src="{{url_for('static', filename='Logo4.png')}}" />
+        </header>
+        <!-- Main content section -->
+        <section>
+            <!-- Introduction paragraphs -->
+            <p>Would you like to control your presentations without touching the mouse or other computer keys?</p>
+            <p>Now you can do it with HandWave!</p>
+            <p>Choose the mode you prefer and manage presentations using simple gestures!</p>
+
+            <br><br>
+             <!-- Placeholder for browser type information -->
+            <span id="browser-type"></span>
+            <!-- Input field and button for presentation URL -->
+            <label for="presentation-url-input">To get started, enter the link to a presentation saved on Google Drive:</label>
+            <input type="text" id="presentation-url-input" placeholder="Enter link...">
+            <button onclick="updatePresentationUrl()">Upload</button>
+            <!-- Iframe for presentation display -->
+            <iframe id="presentation-iframe" src="{{ presentation_url }}" frameborder="0" marginheight="0" marginwidth="0" onload="onIframeLoad()">Loading...</iframe>
+        </section>
+        <!-- Container for buttons to switch between content modes -->
+        <div class="buttons-container" id="contentButtons" style="display: none;">
+            <button onclick="showContent('left')">Control with your hand</button>
+            <button onclick="showContent('right')">Control with Wio Terminal</button>
+        </div>
+        <!-- Left content section -->
+        <div id="contentLeft" style="display: none;">
+            <!-- Description and requirements for hand control mode -->
+            <br>
+            <p>This mode is preferable when you are at a short to medium distance from the computer and in good lighting.</p>
+            <h4>Requirements:</h4>
+            <ul>
+                <li>A webcam</li>
+                <li>If you are using a MacBook, don't forget to grant permissions as follows:<br>
+                    Go to System Preferences -> Security & Privacy -> Accessibility, and check the box next to 'Terminal'
+                </li>
+            </ul>
+            <!-- Gestures and instructions for hand control mode -->
+            <h4>Gestures:</h4>
+            <p>To control your presentation, use hand gestures in front of your webcam. Here, we will demonstrate all the available features along with their corresponding gestures.</p><br>
+            <p>All gestures can be performed interchangeably with both the right and left hand.</p><br>
+            <p>Ensure that all gestures are executed above the green horizontal line visible in your webcam video feed, except for those needed for drawing and pointing.</p>
+            <ul>
+                <li><img src="{{url_for('static', filename='pinkie.png')}}" style="width: 7%"><p>Go to the next slide (if you are using the left hand, it goes to the previous slide)</p></li><br>
+                <li><img src="{{url_for('static', filename='thumb.png')}}" style="width: 6%"><p>&nbsp;Go to the previous slide (if you are using the left hand, it goes to the next slide)</p></li><br>
+                <li><p>To draw on the slide follow these steps:</p></li><br>
+                <ol>
+                    <li>
+                        <p>1.</p><img src="{{url_for('static', filename='three.png')}}" style="width: 8%"><p>Activate / deactivate pen</p>
+                    </li><br>
+                    <li>
+                        <p>2.</p><img src="{{url_for('static', filename='two.png')}}" style="width: 8%"><p>Move the pen pointer</p>
+                    </li><br>
+                    <li>
+                        <p>3.</p><img src="{{url_for('static', filename='index_finger.png')}}" style="width: 8%"><p>Draw</p>
+                    </li>
+                </ol><br>
+                <li><img src="{{url_for('static', filename='fist.png')}}" style="width: 6.5%"><p>&nbsp;Delete the drawings on the slide</p></li><br>
+                <li><img src="{{url_for('static', filename='full_hand.png')}}" style="width: 7%"><p>&nbsp;Go back to the homepage</p></li><br>
+                <li><img src="{{url_for('static', filename='four.png')}}" style="width: 7.5%"><p>Show / hide tutorial</p></li><br>
+            </ul>
+            <!-- Form to submit and start left-hand control -->
+            <form action="/hand_control_page" method="post" onsubmit="updatePresentationUrl()">
+                <input type="hidden" id="hidden-presentation-url" name="presentation_url" value="">
+                <button type="submit">Start now</button>
+            </form>
+        </div>
+        <!-- Right content section -->
+        <div id="contentRight" style="display: none;">
+            <!-- Description and requirements for Wio Terminal control mode -->
+            <br>
+            <p>This mode is preferable when you want to control the presentation even from a long distance. It is not affected by the level of illumination.</p>
+            <p>In this mode, the drawing is not available.</p>
+            <h4>Requirements:</h4>
+            <ul>
+                <li>Wio Terminal: it is a hardware device created by Seeed Studio, a company specialized in open-source electronic products and hardware development. Wio Terminal is essentially a microcontroller based on a SAMD51, a powerful chip that combines a 32-bit dual-core processor, Wi-Fi and Bluetooth connectivity, and a variety of input/output peripherals.</li>
+                <div style="text-align: center;">
+                    <img src="{{url_for('static', filename='wio.png')}}" style="width: 17%; display: inline-block;">
+                </div>
+            </ul>
+            <!-- Gestures and instructions for Wio Terminal control mode -->
+            <h4>Gestures:</h4>
+            <p>To control your presentation, make gestures while holding the Wio Terminal. Here, we will demonstrate all the available features along with their corresponding gestures.</p><br>
+            <ul>
+                <li><img src="{{url_for('static', filename='right_png.png')}}" style="width: 16%"><p>&nbsp;Swipe to the right: go to the next slide</p></li><br>
+                <li><img src="{{url_for('static', filename='left_png.png')}}" style="width: 17%"><p>Swipe to the left: go to the previous slide</p></li><br>
+                <li><img src="{{url_for('static', filename='flip_png.png')}}" style="width: 17%"><p>Flip: go back to the homepage</p></li><br>
+                <li><img src="{{url_for('static', filename='down_png.png')}}" style="width: 14%"><p>&nbsp;&nbsp;&nbsp;&nbsp;Pull down: show / hide tutorial</p></li>
+            </ul>
+            <p>On the Wio Terminal screen, after detecting each gesture, a label appears showing the recognized gesture, which can be right, left, flip or down.</p><br>
+            <!-- Form to submit and start Wio Terminal control -->
+            <form action="/wio_control_page" method="post" onsubmit="updatePresentationUrl()">
+                <input type="hidden" id="hidden-presentation-url-wio" name="presentation_url" value="">
+                <button type="submit">Start now</button>
+            </form>
+        </div>
+        <!-- External JavaScript library for Materialize CSS framework -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <script>
+            let buttonClicked = false;
+            function updatePresentationUrl() { // Function to update presentation URL in the iframe
+                var presentationIframe = document.getElementById("presentation-iframe");
+                var presentationUrlInput = document.getElementById("presentation-url-input")
+                var hiddenInput = document.getElementById("hidden-presentation-url");
+                var hiddenInput_wio = document.getElementById("hidden-presentation-url-wio");
+                var newUrl = presentationUrlInput.value;
+                var sub = "/embed?start=false&loop=false&delayms=3000&rm=minimal"
+                var linkModified = newUrl.replace(/\/edit\?.*$/, sub);
+                presentationIframe.src = linkModified;
+                hiddenInput.value = linkModified;
+                hiddenInput_wio.value = linkModified;
+            }
+
+            function onIframeLoad() { // Function to handle iframe load event
+                var contentButtons = document.getElementById('contentButtons');
+                contentButtons.style.display = 'flex';
+            }
+
+            function showContent(side) { // Function to show content based on the selected side
+                var contentLeft = document.getElementById('contentLeft');
+                var contentRight = document.getElementById('contentRight');
+                if(!buttonClicked) {
+                    window.scrollBy({
+                        top: 200,
+                        behavior: "smooth",
+                    });
+                    buttonClicked = true;
+                }
+
+                if (side === 'left') {
+                    contentLeft.style.display = 'block';
+                    contentRight.style.display = 'none';
+                } else {
+                    contentLeft.style.display = 'none';
+                    contentRight.style.display = 'block';
+                }
+                
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                M.AutoInit();
+            });
+        </script>
+
+        <script>
+            function get_size() { // Function to periodically get and send window size information
+                let screenHeight = window.screen.height;
+                let screenWidth = window.screen.width;
+                let w = window.outerWidth;
+                let h = window.outerHeight;
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ w }),
+                });
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ h }),
+                });
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ height }),
+                });
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ width }),
+                });
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ screenHeight }),
+                });
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ screenWidth }),
+                });
+            }
+            const interval = 2000;
+            setInterval(get_size, interval);
+
+
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                } else {
+                    var isVisible = "true"
+                    fetch('/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ isVisible }),
+                    });
+                }
+            }, true);
+        </script>
+    </div>
+</body>
+</html>
