@@ -213,3 +213,9 @@ We needed a device that was:
 - Positive feedback on **both control modes** (webcam & Wio Terminal)  
 
 ---
+
+## Authors
+- [@Pnlalessio](https://github.com/Pnlalessio)  
+- [@JessicaFrabotta](https://github.com/JessicaFrabotta)
+
+---
