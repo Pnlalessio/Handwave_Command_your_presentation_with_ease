@@ -38,8 +38,8 @@ Handwave offers **two control modes** to adapt to different environments:
 - ❌ Does not support the annotation feature
 
 <p align="center">
-  <img src="Immagine1.png" width="55%" />
-  <img src="Immagine2.png" width="55%" />
+  <img src="Immagine1.png" width="65%" />
+  <img src="Immagine2.png" width="65%" />
 </p>
 
 ---
