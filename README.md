@@ -227,6 +227,12 @@ We needed a device that was:
 
 ---
 
+## 🎥 Demonstrations  
+
+Full [demo video](https://drive.google.com/file/d/1Ru6yxlDLMh1KfpRjgUYAma8BqtSS5ync/view?usp=drive_link)
+
+---
+
 ## Authors
 - [@Pnlalessio](https://github.com/Pnlalessio)  
 - [@JessicaFrabotta](https://github.com/JessicaFrabotta)
