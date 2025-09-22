@@ -229,7 +229,7 @@ We needed a device that was:
 
 ## 🎥 Demonstrations  
 
-[demo video]([https://drive.google.com/file/d/126eiOTjoHAptE4GLCWDK46c3gz_tiYP8/view?usp=sharing](https://drive.google.com/file/d/1Ru6yxlDLMh1KfpRjgUYAma8BqtSS5ync/view?usp=sharing)) 
+[demo video]([https://drive.google.com/file/d/1Ru6yxlDLMh1KfpRjgUYAma8BqtSS5ync/view?usp=drive_link)) 
 
 ---
 
