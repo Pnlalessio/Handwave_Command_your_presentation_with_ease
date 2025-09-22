@@ -147,6 +147,10 @@ Handwave was developed with a focus on **simplicity**, **flexibility**, and **us
 - Each gesture is associated with a **specific action** (e.g., next slide, previous slide, annotate, erase, etc.)  
 - 🏠 Users can consult the **gesture list** both on the homepage and during presentation control  
 
+<p align="center">
+  <img src="webcam_mode.png" width="65%" />
+</p>
+
 ---
 
 ## 📡 Gesture Detection via Wio Terminal  
@@ -160,7 +164,11 @@ We needed a device that was:
 
 ✅ Final Choice: **[Wio Terminal](https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started)**  
 - Features all the required components  
-- Programmable with **Arduino IDE**  
+- Programmable with **Arduino IDE**
+
+<p align="center">
+  <img src="Wio_Terminal_Mode.jpeg" width="65%" />
+</p>
 
 ---
 
