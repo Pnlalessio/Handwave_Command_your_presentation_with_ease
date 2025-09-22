@@ -35,7 +35,12 @@ Handwave offers **two control modes** to adapt to different environments:
 ### 2️⃣ Wio Terminal Mode  
 - Uses a **microcontroller (Wio Terminal) with an accelerometer** 📡  
 - Allows gesture control **even at a distance** and **in the dark** 🌑  
-- ❌ Does not support the annotation feature  
+- ❌ Does not support the annotation feature
+
+<p align="center">
+  <img src="immagine1.png" width="45%" />
+  <img src="immagine2.png" width="45%" />
+</p>
 
 ---
 
