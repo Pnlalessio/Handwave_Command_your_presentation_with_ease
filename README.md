@@ -167,7 +167,7 @@ We needed a device that was:
 - Programmable with **Arduino IDE**
 
 <p align="center">
-  <img src="Wio_Terminal_Mode.jpeg" width="65%" />
+  <img src="Wio_Terminal_Mode.jpeg" width="35%" />
 </p>
 
 ---
