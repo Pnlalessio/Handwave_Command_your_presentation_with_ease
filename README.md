@@ -153,7 +153,7 @@ We needed a device that was:
 - 🖥️ Provided **visual feedback** through a display  
 - 🌍 Capable of **Wi-Fi connectivity** for integration with the web app  
 
-✅ Final Choice: **[Wio Terminal](https://wiki.seeedstudio.com/Wio-Terminal/)**  
+✅ Final Choice: **[Wio Terminal](https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started)**  
 - Features all the required components  
 - Programmable with **Arduino IDE**  
 
