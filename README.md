@@ -35,7 +35,12 @@ Handwave offers **two control modes** to adapt to different environments:
 ### 2️⃣ Wio Terminal Mode  
 - Uses a **microcontroller (Wio Terminal) with an accelerometer** 📡  
 - Allows gesture control **even at a distance** and **in the dark** 🌑  
-- ❌ Does not support the annotation feature  
+- ❌ Does not support the annotation feature
+
+<p align="center">
+  <img src="Immagine1.png" width="65%" />
+  <img src="Immagine2.png" width="65%" />
+</p>
 
 ---
 
@@ -142,6 +147,10 @@ Handwave was developed with a focus on **simplicity**, **flexibility**, and **us
 - Each gesture is associated with a **specific action** (e.g., next slide, previous slide, annotate, erase, etc.)  
 - 🏠 Users can consult the **gesture list** both on the homepage and during presentation control  
 
+<p align="center">
+  <img src="webcam_mode.png" width="70%" />
+</p>
+
 ---
 
 ## 📡 Gesture Detection via Wio Terminal  
@@ -155,7 +164,11 @@ We needed a device that was:
 
 ✅ Final Choice: **[Wio Terminal](https://wiki.seeedstudio.com/Wio-Terminal-Getting-Started)**  
 - Features all the required components  
-- Programmable with **Arduino IDE**  
+- Programmable with **Arduino IDE**
+
+<p align="center">
+  <img src="Wio_Terminal_Mode.jpeg" width="40%" />
+</p>
 
 ---
 
@@ -217,5 +230,5 @@ We needed a device that was:
 ## Authors
 - [@Pnlalessio](https://github.com/Pnlalessio)  
 - [@JessicaFrabotta](https://github.com/JessicaFrabotta)
-
+- [@Em5597](https://github.com/Em5597)
 ---
