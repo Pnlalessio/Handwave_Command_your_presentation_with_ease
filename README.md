@@ -148,7 +148,7 @@ Handwave was developed with a focus on **simplicity**, **flexibility**, and **us
 - 🏠 Users can consult the **gesture list** both on the homepage and during presentation control  
 
 <p align="center">
-  <img src="webcam_mode.png" width="65%" />
+  <img src="webcam_mode.png" width="70%" />
 </p>
 
 ---
@@ -167,7 +167,7 @@ We needed a device that was:
 - Programmable with **Arduino IDE**
 
 <p align="center">
-  <img src="Wio_Terminal_Mode.jpeg" width="35%" />
+  <img src="Wio_Terminal_Mode.jpeg" width="40%" />
 </p>
 
 ---
